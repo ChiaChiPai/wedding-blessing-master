@@ -23,10 +23,11 @@ let message = []
 
 let ref = db.collection('blessing');
 ref.where('read','==',false).onSnapshot(querySnapshot => {
+  const array = []
   querySnapshot.forEach(doc => {
-    message.push({id: doc.id, ...doc.data()})
-    console.log('message', message);
+    array.push({id: doc.id, ...doc.data()})
   });
+  message = array
   if(!querySnapshot) {
     console.log('empty');
   }
@@ -38,9 +39,9 @@ const flowerTimer = setInterval( () => {
     clearInterval(flowerTimer)
     return
   }
-
   document.getElementById('flower').style.display = 'none'
   if(message.length <= 0) return
+
   document.getElementById('flower').innerHTML = `
     ${message[0].name}: ${message[0].msg}
   `
@@ -50,7 +51,7 @@ const flowerTimer = setInterval( () => {
   }).then(() => {
     console.log('update data successful');
   });
-  message.shift()
+
   setTimeout(() => {
     document.getElementById('flower').style.display = 'flex'
     const randomHeight = Math.floor(Math.random() * 70)
@@ -76,7 +77,7 @@ const fireworkTimer = setInterval(() => {
   }).then(() => {
     console.log('update data successful');
   });
-  message.shift()
+
   setTimeout(() => {
     document.getElementById('firework').style.display = 'flex'
     const randomHeight = Math.floor(Math.random() * 70)
