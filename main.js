@@ -5,11 +5,15 @@ const path = require('path')
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1440,
+    height: 300,
     webPreferences: {
       preload: path.join(__dirname, 'preload.js')
-    }
+    },
+    frame: false,          // 標題列不顯示
+    transparent: true,     // 背景透明
+    autoHideMenuBar: true,
+    // isAlwaysOnTop: true,
   })
 
   // and load the index.html of the app.
@@ -17,6 +21,20 @@ function createWindow () {
 
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
+  // const fireworkWindow = new BrowserWindow({
+  //   width: 600,
+  //   height: 600,
+  //   webPreferences: {
+  //     preload: path.join(__dirname, 'preload.js')
+  //   },
+  //   frame: false,          // 標題列不顯示
+  //   transparent: true,     // 背景透明
+  //   autoHideMenuBar: true,
+  //   isAlwaysOnTop: true,
+  // })
+
+  // // and load the index.html of the app.
+  // fireworkWindow.loadFile('firework.html')
 }
 
 // This method will be called when Electron has finished
