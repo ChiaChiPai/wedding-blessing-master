@@ -16,13 +16,15 @@
           opacity: 1;
         }
       }
+
       body {
-        font-size: 20px;
+        font-size: 22px;
         letter-spacing: 1.2px;
+        font-weight: 800;
+        font-family: "Noto Sans CJK TC", "Microsoft JhengHei", PingFang, STHeiti, sans-serif, serif;
       }
       .bless {
-        font-size: 16px;
-        color: rgb(109, 109, 109);
+        font-size: 18px;
       }
       .firework-bg {
         background: url(./asset/images/firework_bg.png);
@@ -37,6 +39,7 @@
         right: 10px;
         top: 0;
         animation: fade-in 1s ease-in-out;
+        text-shadow: 0 0 3px #fad6d6;
       }
       .flower-bg {
         background: url(./asset/images/flower_bg.png);
@@ -47,17 +50,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        filter: opacity(60%);
         position: absolute;
         left: 10px;
         top: 0;
         animation: fade-in 1s ease-in-out;
+        text-shadow: 0 0 3px #fad6d6;
       }
     </style>
-    <title>Hello World!</title>
+    <title>婚禮祝福系統</title>
   </head>
   <body style="-webkit-app-region: drag">
-    <div class="bless">🤵🏻👰🏻‍♀️</div>
+    <div class="bless">🤵🏻👰🏻</div>
     <div class="flower-bg" id="flower" style="display: none"></div>
     <div class="firework-bg" id="firework" style="display: none"></div>
 
