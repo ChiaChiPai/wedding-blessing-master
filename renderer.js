@@ -33,54 +33,38 @@ ref.where('read','==',false).onSnapshot(querySnapshot => {
   }
 });
 
+let count = 0
+
 const flowerTimer = setInterval( () => {
-  const dom = document.getElementById('flower')
-  if (!dom) {
-    clearInterval(flowerTimer)
+  const dom = {
+    0: document.getElementById('flower'),
+    1: document.getElementById('firework')
+  }
+
+  if(message.length <= 0) {
+    if(dom[0].style.display === 'flex') dom[0].style.display = 'none'
+    if(dom[1].style.display === 'flex') dom[1].style.display = 'none'
     return
   }
-  document.getElementById('flower').style.display = 'none'
-  if(message.length <= 0) return
 
-  document.getElementById('flower').innerHTML = `
+  count++
+  const target = count % 2
+
+  dom[target].style.display = 'none'
+
+  dom[target].innerHTML = `
     ${message[0].name}: ${message[0].msg}
   `
-  const ref = db.collection('blessing').doc(message[0].id)
-  ref.update({
+  const ref1 = db.collection('blessing').doc(message[0].id)
+  ref1.update({
     read: true,
   }).then(() => {
     console.log('update data successful');
   });
 
   setTimeout(() => {
-    document.getElementById('flower').style.display = 'flex'
-    const randomHeight = Math.floor(Math.random() * 70)
-    document.getElementById('flower').style.top = `${randomHeight}vh`
+    dom[target].style.display = 'flex'
+    const randomFireWorkHeight = Math.floor(Math.random() * 70)
+    dom[target].style.top = `${randomFireWorkHeight}vh`
   }, 600)
 }, 7000)
-
-const fireworkTimer = setInterval(() => {
-  const dom = document.getElementById('firework')
-  if (!dom) {
-    clearInterval(fireworkTimer)
-    return
-  }
-
-  document.getElementById('firework').style.display = 'none'
-  if(message.length <= 0) return
-  document.getElementById('firework').innerHTML = `
-    ${message[0].name}:  ${message[0].msg}
-  `
-  const ref = db.collection('blessing').doc(message[0].id)
-  ref.update({
-    read: true,
-  }).then(() => {
-    console.log('update data successful');
-  });
-
-  setTimeout(() => {
-    document.getElementById('firework').style.display = 'flex'
-    const randomHeight = Math.floor(Math.random() * 70)
-    document.getElementById('firework').style.top = `${randomHeight}vh`
-  }, 500)
-}, 8000)
