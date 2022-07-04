@@ -6,12 +6,12 @@
 // process.
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCwVTYtyUPnFW-q5Crh8gCrKK1sSJvXLWI",
+  apiKey: "xxx",
   authDomain: "wedding-blessing.firebaseapp.com",
   projectId: "wedding-blessing",
   storageBucket: "wedding-blessing.appspot.com",
-  messagingSenderId: "1027424395640",
-  appId: "1:1027424395640:web:534c3780b3aee2c2c8288d"
+  messagingSenderId: "xxx",
+  appId: "xxxd"
 };
 
 // Initialize Firebase
